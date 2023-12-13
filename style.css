@@ -1,0 +1,387 @@
+/* Font families */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,700&display=swap');
+
+
+:root {
+    --clr-primary-500: hsl(4, 100%, 67%);
+    --clr-primary-400: hsl(4, 100%, 75%);
+    --clr-primary-300: hsl(4, 100%, 90%);
+
+    --clr-neutral-400: hsl(234, 29%, 20%);
+    --clr-neutral-300: hsl(235, 18%, 26%);
+    --clr-neutral-200: hsl(231, 7%, 60%);
+    --clr-neutral-100: hsl(0, 0%, 100%);
+
+    --clr-on-hover: linear-gradient(90deg, hsl(347, 100%, 66%), var(--clr-primary-500));
+
+    --ff-primary: 'Roboto', sans-serif;
+    --ff-body: var(--ff-primary);
+    --ff-heading: var(--ff-primary);
+
+    --fs-300: 2.3rem;
+    --fs-200: 1rem;
+    --fs-100: 0.8rem;
+
+    --fw-regular: 400;
+    --fw-bold: 700;
+}
+
+
+/*
+1. Use a more-intuitive box-sizing model.
+*/
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+
+/*
+2. Remove default margin
+*/
+* {
+    margin: 0;
+    padding: 0;
+} 
+
+
+/*
+Typographic tweaks!
+3. Add accessible line-height
+4. Improve text rendering
+*/
+body {
+    line-height: calc(1em + 0.5rem);
+    -webkit-font-smoothing: antialiased;
+}
+
+
+/*
+5. Improve media defaults
+*/
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+
+
+/*
+6. Remove built-in form typography styles
+*/
+input, button, textarea, select {
+    font: inherit;
+}
+
+
+/*
+7. Avoid text overflows
+*/
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+
+
+/* 
+8. link reset 
+*/
+a {
+    text-decoration: none; 
+    color: currentColor;
+}
+
+
+/* General styling */ 
+.accent-background {
+    --_text-color: var(--text-color, var(--clr-neutral-100));
+
+    background-color: var(--clr-neutral-400);
+    color: var(--_text-color);
+}
+
+
+.fw-regular {
+    font-weight: var(--fw-regular);
+}
+
+
+.fw-bold {
+    font-weight: var(--fw-bold);
+}
+
+
+.fs-large {
+    font-size: var(--fs-300);
+}
+
+
+.fs-xl {
+    font-size: var(--fs-300);
+}
+
+
+.fs-small {
+    font-size: var(--fs-100);
+}
+
+
+.page {
+    height: 100%
+}
+
+
+.page__body { 
+    height: 100%;
+    background-color: var(--clr-neutral-400);
+
+    font-family: var(--ff-primary);
+    font-size: var(--fs-200);
+    
+    color: var(--clr-neutral-400);
+}
+
+
+.container {
+    --side-padding: 1.4rem; 
+    --_max-width: var(--max-width, 60rem);
+
+    width: min(var(--_max-width), 100%);
+    min-height: 100vh;
+
+    background-color: var(--clr-neutral-100);
+
+    margin-inline: auto;
+}
+
+
+.container:has(.success-page--display) {
+    --max-width: 35rem;
+}
+
+
+.newsletter-page {
+    display: grid;
+    grid-template-columns: var(--side-padding) 1fr var(--side-padding);
+    grid-template-areas:
+    "pic pic pic"
+    "... content ...";
+}
+
+
+.main-content {
+    display: grid;
+    row-gap: 1.5rem;
+    grid-area: content;
+
+    margin-top: 2rem;
+
+}
+
+
+.adaptive-picture {
+    grid-column: pic;
+}
+
+
+.adaptive-picture__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.subscription-information {
+    display: grid;
+    row-gap: 1.2rem;
+}
+
+
+.subscription-benefits {
+    --_marker-size: 1.3rem;
+    --_marker-icon-url: url(assets/images/icon-list.svg);
+    list-style-type: none;
+
+    display: grid;
+    row-gap: 1rem;
+
+    padding-left: var(--side-padding);
+}
+
+
+.subscription-benefits__benifit {
+    position: relative;
+    padding-left: 1rem;
+}
+
+
+.subscription-benefits__benifit::before {
+    content: "";
+    display: inline-block;
+    
+    background: var(--_marker-icon-url) no-repeat;
+    background-size: contain;
+
+    width: var(--_marker-size);
+    aspect-ratio: 1;
+
+    position: absolute;
+    left: -1.4rem;
+
+}
+
+
+.form {
+    --_border-radius: 0.4rem;
+
+    display: grid;
+    row-gap: 1.5rem;
+}
+
+
+.form__input-section {
+    display: grid;
+    gap: 0.3rem;
+}
+
+
+.input-field {
+    --_border-color: var(--border-color, var(--clr-neutral-200));
+    --_background-color: var(--background-color, var(--clr-neutral-100));
+    --_input-color: var(--input-color, var(--clr-neutral-400));
+
+    --_padding: 0.8rem;
+
+    display: block;
+    padding: var(--_padding) calc(var(--_padding) * 2);
+
+    border: 1px solid var(--_border-color);
+    border-radius: var(--_border-radius);
+    background-color: var(--_background-color);
+
+    position: relative;
+}  
+
+
+.input-field--error {
+    --border-color: var(--clr-primary-500);
+    --background-color: var(--clr-primary-300);
+    --input-color: var(--clr-primary-400);
+    
+}
+
+
+.input-field--error::placeholder {
+    color: var(--clr-primary-400);
+} 
+
+
+.label {
+    position: relative;
+}
+
+
+.label--with-error::after {
+    content: attr(data-error);
+    position: absolute;
+    right:0;
+    color: var(--clr-primary-500)
+}
+
+
+.button {
+    --_padding: 1rem;
+
+    border: none;
+    border-radius: 0.4rem;
+    padding: var(--_padding) calc(var(--_padding) * 2);
+
+    cursor: pointer;
+}
+
+
+.button:hover {
+    background: var(--clr-on-hover);
+    box-shadow: 0px 0px 40px 0px var(--clr-primary-300);
+}
+
+
+.success-page {
+    display: none;
+}
+
+
+.success-page--display {
+    display: grid;
+    align-items: center;
+    height: 100%;
+
+    padding-inline: var(--side-padding);
+}
+
+
+.success-page__message {
+    display: grid;
+    row-gap: 2rem;
+
+    margin-top: 20vh;
+}
+
+
+.success-page__shout {
+    line-height: 3rem;
+}
+
+
+.success-page__button {
+    margin-top: 15rem;
+}
+
+
+
+
+
+@media (min-width: 500px) {
+    .page__body {
+        display: grid;
+        place-content: center;
+    }
+
+
+    .container {
+        --side-padding: 2rem;
+        min-height: auto;
+        border-radius: 2rem;   
+    }
+    
+    
+    .newsletter-page {
+        grid-template-columns: 2rem 1fr 2rem 1fr 2rem;
+        grid-template-areas: 
+        "... content ... pic ...";
+
+        align-items: center;
+        padding-block: 1rem;
+    }
+
+
+    .adaptive-picture__img{
+        min-height: 25rem;
+    }
+
+
+    .success-page {
+        padding-block: 2rem;
+        row-gap: 2rem;
+    }
+
+
+    .success-page__message {
+        display: grid;
+        row-gap: 2rem;
+    
+        margin-top: 0;
+    }
+    
+    
+    .success-page__button {
+        margin-top: 0;
+    }
+}
